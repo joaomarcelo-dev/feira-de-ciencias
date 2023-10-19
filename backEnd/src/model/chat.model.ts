@@ -19,7 +19,7 @@ class ChatModel {
       include: {
         members: true,
       }
-    })
+    });
   } 
 }
 
