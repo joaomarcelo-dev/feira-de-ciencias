@@ -6,7 +6,7 @@ import { codesRouter, userRouter, chatRouter, messageRouter } from './router';
 const app = express();
 app.use(express.json());
 const server = createServer(app);
-const io = new Server(server);
+export const io = new Server(server);
 
 // app.route('/*')
 //   .all(({ path, method, baseUrl, ip }) => {

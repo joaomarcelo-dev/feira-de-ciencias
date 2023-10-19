@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import MessageService from "../service/message.service";
 import { decodeToken } from "../provider/token.provider";
 import { JwtPayload } from "jsonwebtoken";
+import { io } from "../app";
 
 const messageService = new MessageService();
 
@@ -37,6 +38,8 @@ class MessageController {
       chatId,
       userId: id,
     });
+
+    io.emit('newMessage', data);
 
     return res.status(status).json(data);
   }

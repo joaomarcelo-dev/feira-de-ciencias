@@ -9,3 +9,7 @@ socket.on('connection', (socket: Socket) => {
   store.dispatch(statusConnection(true));
   console.log('client: ', socket.id)
 });
+
+socket.on('newMessage', (data) => {
+  console.log('newMessage: ', data)
+});

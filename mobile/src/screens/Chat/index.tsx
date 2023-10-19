@@ -37,11 +37,11 @@ function Chat(props) {
     }
   
     getMessages();
-  }, [])
+  }, []);
 
 
   const submitMessage = async () => {
-    const response = await axiosOperator({
+    await axiosOperator({
       baseURL: endPoint,
       headers: {
         Authorization: `Bearer ${tokenUser}`,
@@ -49,11 +49,8 @@ function Chat(props) {
       method: 'post',
       router: routerMessageByChatId(chatId)
     }, {
-      message: 'Ai dentro'
+      message,
     });
-
-    console.log(response.data);
-    
   }
 
   if (loading) {
