@@ -12,50 +12,11 @@ import style from "./style";
 import { Feather } from '@expo/vector-icons';
 
 function Chat(props) {
-  const { chatId, tokenUser } = props.route.params;
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
   const { userName, userPassword } = useSelector((state: RootReducer) => state.app);
 
 
-  useEffect(() => {
-    const getMessages = async () => {
-      
-      const messages = await axiosOperator({
-        baseURL: endPoint,
-        method: "get",
-        router: routerMessageByChatId(chatId),
-        headers: {
-          Authorization: `Bearer ${tokenUser}`,
-        },
-      }, {})
-    
-      setMessages(messages.data);
-      setLoading(false);
-    }
-  
-    getMessages();
-  }, []);
-
-
-  const submitMessage = async () => {
-    await axiosOperator({
-      baseURL: endPoint,
-      headers: {
-        Authorization: `Bearer ${tokenUser}`,
-      },
-      method: 'post',
-      router: routerMessageByChatId(chatId)
-    }, {
-      message,
-    });
-  }
-
-  if (loading) {
-    return <Loading />
-  }
   
   return (
     <View style={ style.container }>
@@ -64,20 +25,12 @@ function Chat(props) {
         chatName=""
       />
       <View style={ style.containerMessage }>
-        {
-          messages.map(({ message, user }) => {
-            const { name, password } = user;
-
-            return (
-              <Message
-                key={ message.id }
-                message={ message }
-                name={ name }
-                isMyMessage={ name === userName && password === userPassword }
-              />
-            )
-          })
-        }
+        <Message
+          key={ 1 }
+          message={ 'Message' }
+          name={ 'Name' }
+          isMyMessage={ false }
+        />
       </View>
 
       <View style={ style.contentInputMessage }>
@@ -92,7 +45,6 @@ function Chat(props) {
           style={ style.iconSend }
           onPress={ () => {
             setMessage("")
-            submitMessage()
           }}
         >
           <Feather

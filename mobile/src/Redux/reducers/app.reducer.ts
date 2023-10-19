@@ -7,6 +7,7 @@ const INITIAL_STATE: AppReducer = {
   userName: '',
   userPassword: '',
   tokenUser: '',
+  idUser: '',
   connected: false,
   codes: {},
 }
@@ -19,6 +20,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
         userName: action.payload.userName,
         userPassword: action.payload.userPassword,
         tokenUser: action.payload.tokenUser,
+        idUser: action.payload.idUser,
       };
     case ADD_CHATS:
       return {

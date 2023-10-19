@@ -28,6 +28,13 @@ class MessageModel {
         message,
         chatId,
         userId,
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+          }
+        }
       }
     });
 

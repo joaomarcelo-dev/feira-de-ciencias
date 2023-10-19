@@ -26,12 +26,9 @@ function Login() {
     });
 
     const tokenUser = response.data.token;
+    const idUser = response.data.idUser;
 
-    if (tokenUser) {
-
-      console.log(tokenUser);
-      
-
+    if (tokenUser && idUser) {
       const allChats = await axiosOperator({
         baseURL: endPoint,
         router: routerGetAllChats,
@@ -50,6 +47,7 @@ function Login() {
           tokenUser,
           userName,
           userPassword,
+          idUser,
         })
       );
     }

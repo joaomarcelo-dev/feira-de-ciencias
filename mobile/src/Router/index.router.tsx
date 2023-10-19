@@ -8,7 +8,7 @@ import RootReducer from '../types/RootReducer.type';
 import Login from '../screens/Login';
 
 function Router() {
-  const { userName, userPassword, tokenUser, connected } = useSelector((state: RootReducer) => state.app);
+  const { userName, userPassword, tokenUser, connected, idUser } = useSelector((state: RootReducer) => state.app);
 
   console.log(connected);
   
@@ -17,7 +17,7 @@ function Router() {
     <SafeAreaProvider>
       <NavigationContainer>
           {
-            !userName || !userPassword || !tokenUser
+            !userName || !userPassword || !tokenUser || !idUser
               ? <Login />
               : <BottomTabs />
           }

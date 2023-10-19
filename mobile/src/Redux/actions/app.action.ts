@@ -9,12 +9,13 @@ export const addMessage = (message: object) => ({
   message,
 });
 
-export const addUser = ({ tokenUser, userName, userPassword }: UserLogin) => ({
+export const addUser = ({ tokenUser, userName, userPassword, idUser }: UserLogin) => ({
   type: ADD_USER,
   payload: {
     tokenUser,
     userName,
     userPassword,
+    idUser,
   },
 });
 

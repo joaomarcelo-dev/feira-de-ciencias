@@ -13,6 +13,7 @@ interface AppReducer {
   userName: string,
   userPassword: string,
   tokenUser: string,
+  idUser: string,
   connected: boolean,
   codes: object,
 }

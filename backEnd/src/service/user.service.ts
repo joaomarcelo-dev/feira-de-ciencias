@@ -24,7 +24,10 @@ class UserService {
 
     return {
       status: 201,
-      data: token,
+      data: {
+        token,
+        idUser: userCreated.id,
+      },
     }
   }
 
@@ -38,6 +41,7 @@ class UserService {
         status: 200,
         data: {
           token,
+          idUser: user.id,
         } 
       }
     }
@@ -53,6 +57,7 @@ class UserService {
       status: 201,
       data: {
         token,
+        idUser: userCreated.id,
       }
     }
   }
