@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import MessageService from "../service/message.service";
 import { decodeToken } from "../provider/token.provider";
 import { JwtPayload } from "jsonwebtoken";
-import httpCodes from "../utils/httpCodes";
 
 const messageService = new MessageService();
 
@@ -17,7 +16,6 @@ class MessageController {
 
   async getAllMessages(req: Request, res: Response) {
     const { status, data } = await messageService.getAllMessages();
-
     return res.status(status).json(data);
   }
 
@@ -32,10 +30,15 @@ class MessageController {
 
     const decode = decodeToken(token)
 
-    return res.status(200).json({
-      message: "Deu certo caraio",
-      decode,
+    const { id } = decode as JwtPayload;
+
+    const { status, data } = await messageService.createMessage({
+      message,
+      chatId,
+      userId: id,
     });
+
+    return res.status(status).json(data);
   }
 }
 
