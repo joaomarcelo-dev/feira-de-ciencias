@@ -10,15 +10,15 @@ class MessageController {
   async getMessagesByChatId(req: Request, res: Response) {
     const { chatId } = req.params;
 
-    const messages = await messageService.getMessage({ chatId });
+    const { status, data } = await messageService.getMessage({ chatId });
 
-    return res.status(200).json(messages);
+    return res.status(status).json(data);
   }
 
   async getAllMessages(req: Request, res: Response) {
-    const messages = await messageService.getAllMessages();
+    const { status, data } = await messageService.getAllMessages();
 
-    return res.status(200).json(messages);
+    return res.status(status).json(data);
   }
 
   async createMessage(req: Request, res: Response) {

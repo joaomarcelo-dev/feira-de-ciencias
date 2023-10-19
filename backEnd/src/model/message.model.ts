@@ -13,13 +13,19 @@ class MessageModel {
       },
     });
 
-    return messages;
+    return {
+      status: 200,
+      data: messages,
+    };
   }
 
   async getAllMessages() {
     const messages = prisma.message.findMany();
 
-    return messages;
+    return {
+      status: 200,
+      data: messages,
+    };
   }
 
   async createMessage({ message, chatId, userId }: NewMessage ) {
@@ -31,7 +37,10 @@ class MessageModel {
       }
     });
 
-    return newMessage;
+    return {
+      status: 201,
+      data: newMessage,
+    };
   }
 }
 
