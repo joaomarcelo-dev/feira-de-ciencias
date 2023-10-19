@@ -1,7 +1,7 @@
 import io, { Socket } from 'socket.io-client';
 import { endPoint } from '../../Provider/app.server';
 import store from '../../Redux/store.redux';
-import { statusConnection } from '../../Redux/actions/app.action';
+import { addMessage, statusConnection } from '../../Redux/actions/app.action';
 
 const socket = io(endPoint);
 
@@ -12,4 +12,5 @@ socket.on('connection', (socket: Socket) => {
 
 socket.on('newMessage', (data) => {
   console.log('newMessage: ', data)
+  store.dispatch(addMessage(data))
 });
