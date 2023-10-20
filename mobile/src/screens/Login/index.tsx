@@ -15,12 +15,26 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    dispatch(
-      addUser({
-        userName,
-        userPassword,
-      })
-    );
+
+    const { data } = await axiosOperator({
+      baseURL: endPoint,
+      headers: {},
+      method: 'post',
+      router: routerLoginUser,
+    }, {
+      name: userName,
+      password: userPassword,
+    });
+
+
+    console.log(data);
+    
+    // dispatch(
+    //   addUser({
+    //     userName,
+    //     userPassword,
+    //   })
+    // );
   }
 
   return (
