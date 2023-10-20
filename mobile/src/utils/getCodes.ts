@@ -1,12 +1,11 @@
 import { endPoint, routerCodes } from '../Provider/app.server';
 import { addCodes } from '../Redux/actions/app.action';
+import store from '../Redux/store.redux';
 import { axiosOperator } from '../services/server/index';
 
 import { useDispatch } from 'react-redux';
 
 export const getCodes = async () => {
-
-  const dispatch = useDispatch();
 
   const response = await axiosOperator({
     baseURL: endPoint,
@@ -16,8 +15,11 @@ export const getCodes = async () => {
   }, {});
   
   const codes = response.data;
+
+  console.log(codes);
   
-  dispatch(addCodes(codes))
+  
+  store.dispatch(addCodes(codes))
 }
 
   

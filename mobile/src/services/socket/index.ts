@@ -11,6 +11,5 @@ socket.on('connection', (socket: Socket) => {
 });
 
 socket.on('newMessage', (data) => {
-  console.log('newMessage: ', data)
   store.dispatch(addMessage(data))
 });

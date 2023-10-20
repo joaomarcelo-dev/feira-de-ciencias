@@ -8,12 +8,13 @@ import Header from "../../components/Header";
 import Message from "../../components/Message";
 import RootReducer from "../../types/RootReducer.type";
 import style from "./style";
+import { cryptografic, decryptografic } from "../../utils/criptografic";
 
 function Chat(props) {
   const scrollViewRef = useRef(null);
 
   const [sendMessage, setSendMessage] = useState("");
-  const { userName, userPassword, message } = useSelector((state: RootReducer) => state.app);
+  const { userName, userPassword, message, codes } = useSelector((state: RootReducer) => state.app);
   const [allMessages, setAllMessages] = useState([]);
   const { chatId } = props.route.params;
 
@@ -28,10 +29,8 @@ function Chat(props) {
       chatId,
       userName,
       userPassword,
-      message: sendMessage,
+      message: cryptografic(sendMessage, codes),
     });
-
-    console.log(data);
   }
 
   useEffect(() => {
@@ -59,11 +58,10 @@ function Chat(props) {
         >
           {
             allMessages.map((message, index) => {
-              
               return (
                 <Message
                   key={ index }
-                  message={ message.message }
+                  message={ decryptografic(message.message, codes) }
                   name={ message.userName }
                   isMyMessage={ message.userName === userName && message.userPassword === userPassword }
                 />
@@ -76,6 +74,7 @@ function Chat(props) {
 
       <View style={style.contentInputMessage}>
         <TextInput
+          onFocus={scrollToBottom}
           onChangeText={(text) => setSendMessage(text)}
           value={sendMessage}
           style={style.inputMessage}
