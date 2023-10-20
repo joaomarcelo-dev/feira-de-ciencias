@@ -17,6 +17,21 @@ class ChatModel {
   async getAllChats() {
     return await prisma.chats.findMany({
       include: {
+        Message: {
+          select: {
+            message: true,
+            chatId: true,
+            createdAt: true,
+            id: true,
+            userId: true,
+            user: {
+              select: {
+                name: true,
+                id: true,
+              }
+            }
+          }
+        },
         members: true,
       }
     });

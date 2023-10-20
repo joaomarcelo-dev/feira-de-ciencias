@@ -15,10 +15,6 @@ export const getCodes = async () => {
   }, {});
   
   const codes = response.data;
-
-  console.log(codes);
-  
-  
   store.dispatch(addCodes(codes))
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ScrollView, TextInput, TouchableOpacity, View } from "react-native";
 import { axiosOperator } from "../../services/server";
 import { endPoint, routerMessageByChatId } from "../../Provider/app.server";
 import { useSelector } from "react-redux";
@@ -9,37 +9,38 @@ import Message from "../../components/Message";
 import RootReducer from "../../types/RootReducer.type";
 import style from "./style";
 import { cryptografic, decryptografic } from "../../utils/criptografic";
+import MessageType from "../../types/Message.type";
 
 function Chat(props) {
   const scrollViewRef = useRef(null);
 
   const [sendMessage, setSendMessage] = useState("");
-  const { userName, userPassword, message, codes } = useSelector((state: RootReducer) => state.app);
-  const [allMessages, setAllMessages] = useState([]);
+  const { codes, chats, userId, tokenUser } = useSelector((state: RootReducer) => state.app);
+
+  const [allMessages, setAllMessages] = useState<MessageType[]>([]);
   const { chatId } = props.route.params;
 
 
   const submitMessage = async () => {
     const { data } = await axiosOperator({
       baseURL: endPoint,
-      headers: {},
+      headers: {
+        Authorization: `Bearer ${tokenUser}`
+      },
       method: 'post',
-      router: '/message',
+      router: routerMessageByChatId(chatId),
     }, {
-      chatId,
-      userName,
-      userPassword,
       message: cryptografic(sendMessage, codes),
     });
   }
 
   useEffect(() => {
-    if (message.length) {
-      setAllMessages(message);
-    }
-
+    const messages = chats.find(chat => chat.id === chatId).Message;
+    
+    
+    setAllMessages(messages);
     scrollToBottom();
-  }, [message])
+  }, [chats])
 
   const scrollToBottom = () => {
     scrollViewRef.current.scrollToEnd({ animated: true });
@@ -62,12 +63,11 @@ function Chat(props) {
                 <Message
                   key={ index }
                   message={ decryptografic(message.message, codes) }
-                  name={ message.userName }
-                  isMyMessage={ message.userName === userName && message.userPassword === userPassword }
+                  name={ message.user.name }
+                  isMyMessage={ userId === message.userId }
                 />
               )
             })
-
           }
         </ScrollView>
       </View>

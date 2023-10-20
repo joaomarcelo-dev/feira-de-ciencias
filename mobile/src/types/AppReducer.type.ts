@@ -7,13 +7,24 @@ interface AppReducer {
       id: string,
       userId: string,
       chatId: string,
-    }[]
+    }[],
+    Message: {
+      message: string,
+      chatId: string,
+      createdAt: string,
+      id: string,
+      userId: string,
+      user: {
+        name: string,
+        id: string,
+      }
+    }[],
   }[],
   message: object[],
   userName: string,
   userPassword: string,
   tokenUser: string,
-  idUser: string,
+  userId: string,
   connected: boolean,
   codes: object,
 }

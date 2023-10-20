@@ -26,24 +26,24 @@ export const io = new Server(server, {
 
 const messages: object[] = [];
 
-// app.use('/user', userRouter);
-// app.use('/chat', chatRouter);
-// // app.use('/message', messageRouter);
+app.use('/user', userRouter);
+app.use('/chat', chatRouter);
+app.use('/message', messageRouter);
 app.use('/codes', codesRouter);
 
-app.post('/message', (req, res) => {
-  const message = req.body;
-  messages.push(message);
+// app.post('/message', (req, res) => {
+//   const message = req.body;
+//   messages.push(message);
 
-  io.emit('newMessage', message);
-  console.log(message);
+//   io.emit('newMessage', message);
+//   console.log(message);
 
-  return res.json(message);
-});
+//   return res.json(message);
+// });
 
-app.get('/message', (req, res) => {
-  return res.json(messages);
-});
+// app.get('/message', (req, res) => {
+//   return res.json(messages);
+// });
 
 io.on('connection', (socket: Socket) => {
   console.log(`Socket conectado: ${socket.id}`);
