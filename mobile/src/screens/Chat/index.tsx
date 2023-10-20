@@ -82,11 +82,17 @@ function Chat(props) {
         />
 
         <TouchableOpacity
-          style={style.iconSend}
+          style={
+            sendMessage.length
+            ? style.iconSend
+            : style.iconSendDisabled
+          }
           onPress={() => {
             setSendMessage("");
             submitMessage();
           }}
+
+          disabled={!sendMessage.length}
         >
           <Feather
             name="send"

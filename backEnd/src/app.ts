@@ -6,7 +6,12 @@ import { codesRouter, userRouter, chatRouter, messageRouter } from './router';
 const app = express();
 app.use(express.json());
 const server = createServer(app);
-export const io = new Server(server);
+export const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'UPDATE', 'PATCH']
+  },
+});
 
 // app.route('/*')
 //   .all(({ path, method, baseUrl, ip }) => {

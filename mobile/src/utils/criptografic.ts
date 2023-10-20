@@ -1,9 +1,4 @@
 export const cryptografic = (value: string, codes: object) => {
-
-  console.log(value);
-  console.log(codes);
-  
-
   const valueCryptografic = value.split('').map((letter) => {
     if (codes[letter]) {
       return codes[letter];
@@ -19,8 +14,6 @@ export const cryptografic = (value: string, codes: object) => {
 }
 
 export const decryptografic = (value: string, codes: object) => {
-  console.log(value);
-
   const invertedObj = {};
 
     for (const key in codes) {
