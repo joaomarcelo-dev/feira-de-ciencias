@@ -10,6 +10,7 @@ import { endPoint, routerGetAllChats, routerLoginUser} from "../../Provider/app.
 function Login() {
   const [ userName, setUserName ] = useState('');
   const [ userPassword, setUserPassword ] = useState('');
+  const [invalidLogin, setInvalidLogin] = useState(false);
   const validateLogin = userName.length >= 2 && userPassword.length >= 4;
 
   const dispatch = useDispatch();
@@ -27,15 +28,35 @@ function Login() {
     });
 
 
-    console.log(data);
+    // console.log(data);
     
-    // dispatch(
-    //   addUser({
-    //     userName,
-    //     userPassword,
-    //   })
-    // );
-  }
+    const { token, userId } = data;
+
+    if (!token || !userId) return setInvalidLogin(true);
+
+    dispatch(
+      addUser({
+        userName,
+        userPassword,
+        tokenUser: token,
+        userId,
+      }),
+    );
+
+    const { data: dataChats } = await axiosOperator({
+      baseURL: endPoint,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'get',
+      router: routerGetAllChats,
+    }, {});
+
+    console.log(dataChats);
+    
+
+    dispatch(addChats(dataChats));
+  };
 
   return (
     <View style={ style.content }>

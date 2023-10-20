@@ -1,6 +1,13 @@
-interface Message {
-  userId: string;
-  chatId: string;
+interface MessageType {
+  message: string,
+  chatId: string,
+  createdAt: string,
+  id: string,
+  userId: string,
+  user: {
+    name: string,
+    id: string,
+  }
 }
 
-export default Message;
+export default MessageType;
