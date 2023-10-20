@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ScrollView, TextInput, TouchableOpacity, View } from "react-native";
 import { axiosOperator } from "../../services/server";
-import { endPoint } from "../../Provider/app.server";
+import { endPoint, routerMessageByChatId } from "../../Provider/app.server";
 import { useSelector } from "react-redux";
 import { Feather } from '@expo/vector-icons';
 import Header from "../../components/Header";
@@ -15,7 +15,7 @@ function Chat(props) {
   const scrollViewRef = useRef(null);
 
   const [sendMessage, setSendMessage] = useState("");
-  const { userName, userPassword, message, codes, chats, userId } = useSelector((state: RootReducer) => state.app);
+  const { codes, chats, userId, tokenUser } = useSelector((state: RootReducer) => state.app);
 
   const [allMessages, setAllMessages] = useState<MessageType[]>([]);
   const { chatId } = props.route.params;
@@ -24,13 +24,12 @@ function Chat(props) {
   const submitMessage = async () => {
     const { data } = await axiosOperator({
       baseURL: endPoint,
-      headers: {},
+      headers: {
+        Authorization: `Bearer ${tokenUser}`
+      },
       method: 'post',
-      router: '/message',
+      router: routerMessageByChatId(chatId),
     }, {
-      chatId,
-      userName,
-      userPassword,
       message: cryptografic(sendMessage, codes),
     });
   }

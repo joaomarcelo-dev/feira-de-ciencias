@@ -7,9 +7,6 @@ export const cryptografic = (value: string, codes: object) => {
     return letter;
   }).join('_');
 
-  console.log(valueCryptografic);
-  
-
   return valueCryptografic;
 }
 
