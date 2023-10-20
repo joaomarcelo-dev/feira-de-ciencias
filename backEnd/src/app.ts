@@ -19,15 +19,26 @@ export const io = new Server(server);
 //   });
 // ;
 
-app.use('/user', userRouter);
-app.use('/chat', chatRouter);
-app.use('/message', messageRouter);
+const messages: object[] = [];
+
+// app.use('/user', userRouter);
+// app.use('/chat', chatRouter);
+// // app.use('/message', messageRouter);
 app.use('/codes', codesRouter);
 
+app.post('/message', (req, res) => {
+  const message = req.body;
+  messages.push(message);
 
-app.get('/test', (req, res) => {
-  res.json({ message: 'Hello World' });
-})
+  io.emit('newMessage', message);
+  console.log(message);
+
+  return res.json(message);
+});
+
+app.get('/message', (req, res) => {
+  return res.json(messages);
+});
 
 io.on('connection', (socket: Socket) => {
   console.log(`Socket conectado: ${socket.id}`);

@@ -15,42 +15,12 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    const response = await axiosOperator({
-      baseURL: endPoint,
-      router: routerLoginUser,
-      method: 'post',
-      headers: {},
-    }, {
-      name: userName,
-      password: userPassword
-    });
-
-    const tokenUser = response.data.token;
-    const idUser = response.data.idUser;
-
-    if (tokenUser && idUser) {
-      const allChats = await axiosOperator({
-        baseURL: endPoint,
-        router: routerGetAllChats,
-        method: 'get',
-        headers: {
-          Authorization: `Bearer ${tokenUser}`
-        }
-      }, {});
-
-      dispatch(
-        addChats(allChats.data)
-      );
-
-      dispatch(
-        addUser({
-          tokenUser,
-          userName,
-          userPassword,
-          idUser,
-        })
-      );
-    }
+    dispatch(
+      addUser({
+        userName,
+        userPassword,
+      })
+    );
   }
 
   return (

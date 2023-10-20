@@ -15,7 +15,9 @@ function Home() {
   const { chats, userName } = useSelector((state: RootReducer) => state.app);
   
   useEffect(() => {
-    getCodes()
+     (async () => {
+      getCodes();
+     })()
   }, [])
 
   return (
