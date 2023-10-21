@@ -33,6 +33,7 @@ class MessageModel {
         user: {
           select: {
             id: true,
+            name: true,
           }
         }
       }
