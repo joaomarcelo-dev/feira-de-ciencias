@@ -1,8 +1,10 @@
+import Router from "./Router"
+import './services/socket'
+
 function App() {
   return (
     <>
-      <h1>Ai dentro</h1>
-      <p></p>
+      <Router />
     </>
   )
 }
