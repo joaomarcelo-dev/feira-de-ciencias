@@ -1,5 +1,5 @@
 import AppReducer from "../../types/AppReducer.type";
-import { ADD_CHATS, ADD_CODES, ADD_MESSAGE, ADD_USER, STATUS_CONNECTION } from "../actions/app.action";
+import { ADD_CHATS, ADD_CODES, ADD_MESSAGE, ADD_MESSAGE_IN_CHAT, ADD_USER, STATUS_CONNECTION } from "../actions/app.action";
 
 const INITIAL_STATE: AppReducer = {
   chats: [],
@@ -7,7 +7,7 @@ const INITIAL_STATE: AppReducer = {
   userName: '',
   userPassword: '',
   tokenUser: '',
-  idUser: '',
+  userId: '',
   connected: false,
   codes: {},
 }
@@ -20,7 +20,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
         userName: action.payload.userName,
         userPassword: action.payload.userPassword,
         tokenUser: action.payload.tokenUser,
-        idUser: action.payload.idUser,
+        userId: action.payload.userId,
       };
     case ADD_CHATS:
       return {
@@ -32,6 +32,21 @@ const appReducer = (state = INITIAL_STATE, action) => {
         ...state,
         message: [...state.message, action.message],
       };
+
+    case ADD_MESSAGE_IN_CHAT:
+      return {
+        ...state,
+        chats: state.chats.map((chat) => {
+          if (chat.id === action.payload.chatId) {
+            console.log('CHAT ENCONTRADO');
+            
+            chat.Message.push(action.payload);
+
+          }
+
+          return chat;
+        }),
+      }
     case ADD_CODES:
       return {
         ...state,

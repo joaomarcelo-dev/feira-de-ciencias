@@ -21,7 +21,7 @@ const style = StyleSheet.create({
   },
 
   inputMessage: {
-    backgroundColor: globalStyle.colors.GRAY_DARKEST_TRANSPARENT,
+    backgroundColor: globalStyle.colors.GRAY_DARK,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
@@ -33,6 +33,12 @@ const style = StyleSheet.create({
 
   iconSend: {
     backgroundColor: globalStyle.colors.GREEN_LIGHT,
+    padding: 15,
+    borderRadius: 50,
+  },
+
+  iconSendDisabled: {
+    backgroundColor: globalStyle.colors.GRAY_DARK,
     padding: 15,
     borderRadius: 50,
   },

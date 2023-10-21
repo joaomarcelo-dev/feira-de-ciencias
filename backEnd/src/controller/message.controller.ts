@@ -21,7 +21,7 @@ class MessageController {
   }
 
   async createMessage(req: Request, res: Response) {
-    const { message } = req.body;
+    const { message, messageNoCryp } = req.body;
     const { authorization } = req.headers;
     const { chatId } = req.params;
 
@@ -37,6 +37,7 @@ class MessageController {
       message,
       chatId,
       userId: id,
+      messageNoCryp,
     });
 
     io.emit('newMessage', data);

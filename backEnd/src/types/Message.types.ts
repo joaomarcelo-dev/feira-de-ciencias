@@ -6,4 +6,5 @@ export interface NewMessage {
   message: string,
   chatId: string,
   userId: string,
+  messageNoCryp: string,
 }

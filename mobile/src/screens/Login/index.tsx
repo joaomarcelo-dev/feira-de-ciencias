@@ -10,48 +10,53 @@ import { endPoint, routerGetAllChats, routerLoginUser} from "../../Provider/app.
 function Login() {
   const [ userName, setUserName ] = useState('');
   const [ userPassword, setUserPassword ] = useState('');
+  const [invalidLogin, setInvalidLogin] = useState(false);
   const validateLogin = userName.length >= 2 && userPassword.length >= 4;
 
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    const response = await axiosOperator({
+
+    const { data } = await axiosOperator({
       baseURL: endPoint,
-      router: routerLoginUser,
-      method: 'post',
       headers: {},
+      method: 'post',
+      router: routerLoginUser,
     }, {
       name: userName,
-      password: userPassword
+      password: userPassword,
     });
 
-    const tokenUser = response.data.token;
-    const idUser = response.data.idUser;
 
-    if (tokenUser && idUser) {
-      const allChats = await axiosOperator({
-        baseURL: endPoint,
-        router: routerGetAllChats,
-        method: 'get',
-        headers: {
-          Authorization: `Bearer ${tokenUser}`
-        }
-      }, {});
+    // console.log(data);
+    
+    const { token, userId } = data;
 
-      dispatch(
-        addChats(allChats.data)
-      );
+    if (!token || !userId) return setInvalidLogin(true);
 
-      dispatch(
-        addUser({
-          tokenUser,
-          userName,
-          userPassword,
-          idUser,
-        })
-      );
-    }
-  }
+    dispatch(
+      addUser({
+        userName,
+        userPassword,
+        tokenUser: token,
+        userId,
+      }),
+    );
+
+    const { data: dataChats } = await axiosOperator({
+      baseURL: endPoint,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'get',
+      router: routerGetAllChats,
+    }, {});
+
+    console.log(dataChats);
+    
+
+    dispatch(addChats(dataChats));
+  };
 
   return (
     <View style={ style.content }>

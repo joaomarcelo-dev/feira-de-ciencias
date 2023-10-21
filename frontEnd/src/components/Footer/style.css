@@ -1,0 +1,14 @@
+footer {
+  background-color: rgb(26, 25, 25);
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: -7px -20px 96px -27px rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  align-items: center;
+}
+
+.container-icons {
+  gap: 45px;
+}

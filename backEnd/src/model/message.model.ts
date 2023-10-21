@@ -22,17 +22,19 @@ class MessageModel {
     return messages;
   }
 
-  async createMessage({ message, chatId, userId }: NewMessage ) {
+  async createMessage({ message, chatId, userId, messageNoCryp }: NewMessage ) {
     const newMessage = await prisma.message.create({
       data: {
         message,
         chatId,
         userId,
+        messageNoCryp,
       },
       include: {
         user: {
           select: {
             id: true,
+            name: true,
           }
         }
       }

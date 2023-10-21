@@ -41,7 +41,7 @@ class UserService {
         status: 200,
         data: {
           token,
-          idUser: user.id,
+          userId: user.id,
         } 
       }
     }

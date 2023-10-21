@@ -1,0 +1,18 @@
+
+header {
+  padding: 10px 25px;
+  box-shadow: -1px 18px 65px -4px rgb(17, 16, 16);
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.content-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 25%;
+  text-align: center;
+}
+
+

@@ -13,9 +13,9 @@ import { getCodes } from '../../utils/getCodes';
 
 function Home() {
   const { chats, userName } = useSelector((state: RootReducer) => state.app);
-  
+
   useEffect(() => {
-    getCodes()
+    getCodes();
   }, [])
 
   return (
