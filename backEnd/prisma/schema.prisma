@@ -42,11 +42,12 @@ model Members {
 }
 
 model Message {
-  id        String   @id @default(uuid())
-  message   String
-  chatId    String
-  userId    String
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
-  chat      Chats    @relation(fields: [chatId], references: [id])
+  id            String   @id @default(uuid())
+  message       String
+  messageNoCryp String
+  chatId        String
+  userId        String
+  createdAt     DateTime @default(now())
+  user          User     @relation(fields: [userId], references: [id])
+  chat          Chats    @relation(fields: [chatId], references: [id])
 }

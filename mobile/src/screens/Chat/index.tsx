@@ -31,6 +31,7 @@ function Chat(props) {
       router: routerMessageByChatId(chatId),
     }, {
       message: cryptografic(sendMessage, codes),
+      messageNoCryp: sendMessage,
     });
   }
 

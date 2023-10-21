@@ -2,7 +2,12 @@ import { SET_MESSAGE, SET_TOKEN } from "../actions/app.action"
 
 const INITIAL_STATE = {
   token: '',
-  message: {},
+  message: {
+    message: '',
+    user: {
+      name: '',
+    }
+  },
 }
 
 const appReducer = (state = INITIAL_STATE, action) => {

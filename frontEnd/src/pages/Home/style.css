@@ -1,3 +1,60 @@
 .content-home {
   overflow: hidden;
+  height: 100vh;
+}
+
+.container-messages {
+  justify-content: center;
+  /* align-items: center; */
+}
+
+
+.title-container-info {
+  text-align: center;
+  font-size: 2.3rem;
+  color: rgb(221, 214, 205);
+} 
+
+.content-infos { 
+  justify-content: end;
+  padding: 0 25px;
+}
+
+.text-info {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.container-message {
+  padding: 20px;
+}
+
+.container-message-cryp {
+  width: 50%;
+  padding-bottom: 100px;
+}
+
+.container-message-descryp {
+  border-left: 4px solid #646cff;
+  width: 50%;
+}
+
+.title-message {
+  font-size: 1.7rem;
+  color: rgb(255, 171, 69);
+  text-align: center;
+}
+
+.content-message {
+  background-color: #1a1a1a;
+  padding: 10px 45px;
+  border-radius: 20px;
+  margin-top: 50px;
+  word-wrap: break-word;
+  border: 3px solid #ccc;
+}
+
+.text-message {
+  font-size: 1.9rem;
+  max-width: 100%;
 }
