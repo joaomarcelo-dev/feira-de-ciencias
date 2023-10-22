@@ -1,8 +1,13 @@
+import Header from "../../components/Header";
+
 function ConfBackEnd() {
   return (
-    <div>
-      <h1>Configurações do BackEnd</h1>
-    </div>
+    <>
+    <Header />
+      <div>
+        <h1>Configurações do BackEnd</h1>
+      </div>
+    </>
   )
 }
 
