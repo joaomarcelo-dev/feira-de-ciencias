@@ -1,5 +1,5 @@
 import AppReducer from "../../types/AppReducer.type";
-import { ADD_CHATS, ADD_CODES, ADD_MESSAGE, ADD_MESSAGE_IN_CHAT, ADD_USER, STATUS_CONNECTION } from "../actions/app.action";
+import { ADD_CHATS, ADD_CODES, ADD_MESSAGE, ADD_MESSAGE_IN_CHAT, ADD_USER, RESET_STORE, STATUS_CONNECTION } from "../actions/app.action";
 
 const INITIAL_STATE: AppReducer = {
   chats: [],
@@ -57,6 +57,10 @@ const appReducer = (state = INITIAL_STATE, action) => {
         ...state,
         connected: action.payload,
       }
+
+    case RESET_STORE:
+      return INITIAL_STATE
+      
     default:
       return state;
   }

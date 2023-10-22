@@ -72,6 +72,26 @@ class UserService {
       
     }
   }
+
+  async deleteUser(userId: string) {
+    const userExists = await userModel.getUserById(userId);
+
+    if (!userExists) return {
+      status: 404,
+      data: {
+        message: "Usuário não encontrado!",
+      }
+    }
+
+    await userModel.deleteUser(userId);
+
+    return {
+      status: 200,
+      data: {
+        message: "Usuário deletado com sucesso!",
+      }
+    }
+  }
 }
 
 export default UserService;

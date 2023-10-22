@@ -3,11 +3,23 @@
   height: 100vh;
 }
 
+.header-content-home {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+button.reset-app-button {
+  height: fit-content;
+  width: fit-content;
+  padding: 17px 20px;
+  font-size: 1.3rem;
+}
+
 .container-messages {
   justify-content: center;
   /* align-items: center; */
 }
-
 
 .title-container-info {
   text-align: center;
@@ -15,7 +27,8 @@
   color: rgb(221, 214, 205);
 } 
 
-.content-infos { 
+.content-infos {
+  margin-top: 40px;
   justify-content: end;
   padding: 0 25px;
 }

@@ -11,6 +11,12 @@ userRouter.route('/')
   .get(
     // authenticateToken,
     userController.getAllUsers
+  )
+
+userRouter.route('/:userId')
+  .delete(
+    // authenticateToken,
+    userController.deleteUser
   );
 
 userRouter.route('/login')

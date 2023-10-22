@@ -1,8 +1,17 @@
+import Header from "../../components/Header";
+
+import './style.css'
+
 function ConfBackEnd() {
   return (
-    <div>
-      <h1>Configurações do BackEnd</h1>
-    </div>
+    <>
+    <Header />
+      <div className="content-settings-server">
+        <div className="card-information">
+          
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -1,0 +1,24 @@
+.content-option {
+  padding: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e6e6e6;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.content-option:hover {
+  background-color: #2e2e2e;
+  transform: scale(1.02);
+}
+
+.text-option {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.row-select {
+  background-color: #c98826;
+  pointer-events: none;
+}

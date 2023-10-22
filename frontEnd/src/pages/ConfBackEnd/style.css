@@ -1,0 +1,10 @@
+.content-settings-server {
+  margin-top: 150px;
+}
+
+.card-information {
+  height: 300px;
+  width: 230px;
+  background-color: rgb(59, 59, 59);
+  border-radius: 20px;
+}

@@ -30,6 +30,26 @@ class UserModel {
 
     return user;
   }
+
+  async deleteUser(userId: string) {
+    const userDeleted = await prisma.user.delete({
+      where: {
+        id: userId,
+      }
+    });
+
+    return userDeleted;
+  }
+
+  async getUserById(userId: string) {
+    const user = await prisma.user.findFirst({
+      where: {
+        id: userId,
+      }
+    });
+
+    return user;
+  }
 }
 
 export default UserModel;

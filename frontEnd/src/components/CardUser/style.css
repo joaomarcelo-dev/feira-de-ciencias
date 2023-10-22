@@ -1,0 +1,38 @@
+.content-card-user {
+  background-color: rgb(14, 13, 13);
+  padding: 10px 40px;
+  margin: 20px;
+  border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-name-card-user {
+  color: white;
+  font-weight: bold;
+}
+
+.content-options-card-user {
+  align-items: center;
+  gap: 80px;
+}
+
+.div-info-card-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+.content-text-info-card-user {
+  text-align: center;
+}
+
+.text-info-card-user {
+  font-size: 1.4rem;
+}
+
+.input-check-user {
+  width: 30px;
+  height: 30px;
+}
