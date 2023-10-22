@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.css';
 
-import { FiSettings, FiServer, FiHome } from 'react-icons/fi';
-
+import { FiSettings, FiServer, FiHome, FiUser } from 'react-icons/fi';
+import { BsFillChatLeftTextFill } from 'react-icons/bs'
 
 const options = [
   {
@@ -13,12 +13,28 @@ const options = [
     link: "/",
     iconSize: 35
   },
+
+  {
+    icon: FiUser,
+    text: "Configurações de Usuários",
+    link: "/settings/users",
+    iconSize: 35
+  },
+
+  {
+    icon: BsFillChatLeftTextFill,
+    text: "Configurações de Chats",
+    link: "/settings/chats",
+    iconSize: 35
+  },
+
   {
     icon: FiSettings,
     text: "Configurações Gerais",
     link: "#",
     iconSize: 35
   },
+  
   {
     icon: FiServer,
     text: "Configurações do Servidor",

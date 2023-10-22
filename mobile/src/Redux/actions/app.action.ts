@@ -4,6 +4,7 @@ export const ADD_CHATS = 'ADD_CHATS';
 export const ADD_CODES = 'ADD_CODES';
 export const STATUS_CONNECTION = 'STATUS_CONNECTION'
 export const ADD_MESSAGE_IN_CHAT = 'ADD_MESSAGE_IN_CHAT';
+export const RESET_STORE = 'RESET_STORE';
 
 export const addMessage = (message: object) => ({
   type: ADD_MESSAGE,
@@ -38,4 +39,8 @@ export const addCodes = (codes: object) => ({
 export const statusConnection = (status: boolean) => ({
   type: STATUS_CONNECTION,
   payload: status,
+});
+
+export const resetStoreAction = () => ({
+  type: RESET_STORE,
 });

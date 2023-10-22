@@ -1,14 +1,9 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import style from "./style";
-import { useNavigation } from "@react-navigation/native";
-
-import { useDispatch, useSelector } from "react-redux";
-import RootReducer from "../../types/RootReducer.type";
-
 import { SimpleLineIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { addChats, addUser } from "../../Redux/actions/app.action";
 import ButtonNavigate from "../ButtonNavigate";
+import resetStore from "../../utils/resetStore";
 
 interface HeaderProps {
   type: 'chats' | 'contacts' | 'settings';
@@ -16,23 +11,10 @@ interface HeaderProps {
 }
 
 function Header(props: HeaderProps) {
-  const dispatch = useDispatch();
-
-  const { navigate } = useNavigation();
-
   const logOut = () => {
-    dispatch(addUser({
-      userName: '',
-      tokenUser: '',
-      userPassword: '',
-    }));
-
-    dispatch(
-      addChats([])
-    )
+    resetStore();
   }
-
-
+  
   return (
     <View style={ style.container }>
       {

@@ -15,6 +15,12 @@ class UserController {
     const { status, data } = await userService.getAllUsers();
     return res.status(status).json(data);
   }
+
+  async deleteUser(req: Request, res: Response) {
+    const { userId } = req.params;
+    const { status, data } = await userService.deleteUser(userId);
+    return res.status(status).json(data);
+  }
 }
 
 export default UserController;

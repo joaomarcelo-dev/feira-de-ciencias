@@ -1,4 +1,4 @@
-import { SET_MESSAGE, SET_TOKEN } from "../actions/app.action"
+import { ALTER_USERS, SET_MESSAGE, SET_TOKEN, SET_USERS } from "../actions/app.action"
 
 const INITIAL_STATE = {
   token: '',
@@ -8,6 +8,7 @@ const INITIAL_STATE = {
       name: '',
     }
   },
+  users: [],
 }
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -21,6 +22,24 @@ const appReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         message: action.payload
+      }
+    case SET_USERS:
+      return {
+        ...state,
+        users: action.payload
+      }
+    case ALTER_USERS:
+      return {
+        ...state,
+        users: () => {
+          return state.users.map((user) => {
+            if (user.id === action.payload.id) {
+              return action.payload
+            }
+
+            return user
+          });
+        }
       }
     default:
       return state
