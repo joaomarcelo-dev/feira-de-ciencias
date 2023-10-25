@@ -66,6 +66,7 @@ function Chat(props) {
                   message={ decryptografic(message.message, codes) }
                   name={ message.user.name }
                   isMyMessage={ userId === message.userId }
+                  dateTime={ message.createdAt }
                 />
               )
             })

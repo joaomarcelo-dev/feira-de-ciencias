@@ -22,9 +22,16 @@ app.use('/message', messageRouter);
 app.use('/codes', codesRouter);
 
 io.on('connection', (socket: Socket) => {
-  console.log(`Socket conectado: ${socket.id}`);
   socket.on('reset-app', () => {
     io.emit('reset-app');
+  });
+
+  socket.on('user-online', (data) => {
+    console.log('Usuário online:', data);
+  });
+  
+  socket.on('user-offline', (data) => {
+    
   });
 });
 
