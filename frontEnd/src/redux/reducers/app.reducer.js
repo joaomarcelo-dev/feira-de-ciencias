@@ -26,7 +26,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
     case SET_USERS:
       return {
         ...state,
-        users: action.payload
+        users: action.payload,
       }
     case ALTER_USERS:
       return {

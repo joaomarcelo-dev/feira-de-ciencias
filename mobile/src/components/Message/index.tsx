@@ -5,9 +5,16 @@ interface MessageProps {
   message: string;
   isMyMessage: boolean;
   name: string;
+  dateTime: string;
 }
 
-function Message({ isMyMessage, message, name }: MessageProps) {
+function Message({ isMyMessage, message, name, dateTime }: MessageProps) {
+
+  const time = new Date(dateTime);
+
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+
   return (
     <View style={ [
       style.container,
@@ -22,9 +29,13 @@ function Message({ isMyMessage, message, name }: MessageProps) {
       }
 
       <Text
-        style={ isMyMessage ? style.myMessageText : style.othersMessageText }
+        style={ [isMyMessage ? style.myMessageText : style.othersMessageText] }
       >
         { message }
+      </Text>
+
+      <Text style={ isMyMessage ? style.myHour : style.othersHour }>
+        { `${hours}:${minutes}` }
       </Text>
     </View> 
   )

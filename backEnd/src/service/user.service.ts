@@ -1,3 +1,4 @@
+import { io } from "../app";
 import UserModel from "../model/user.model";
 import { generateToken } from "../provider/token.provider";
 import { User } from "../types/User.types";
@@ -21,6 +22,8 @@ class UserService {
       id: userCreated.id,
       name: userCreated.name
     });
+
+    io.emit('new-user',userCreated);
 
     return {
       status: 201,
@@ -57,7 +60,7 @@ class UserService {
       status: 201,
       data: {
         token,
-        idUser: userCreated.id,
+        userId: userCreated.id,
       }
     }
   }
@@ -84,6 +87,8 @@ class UserService {
     }
 
     await userModel.deleteUser(userId);
+
+    io.emit('delete-user', userId);
 
     return {
       status: 200,

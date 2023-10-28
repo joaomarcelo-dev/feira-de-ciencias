@@ -7,6 +7,7 @@ const style = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
     maxWidth: "80%",
+    minWidth: "40%",
   },
 
   myMessage: {
@@ -25,12 +26,24 @@ const style = StyleSheet.create({
   
   myMessageText: {
     color: globalStyle.colors.GRAY,
-    fontSize: 14,
+    fontSize: 16,
+  },
+
+  myHour: {
+    color: globalStyle.colors.GRAY,
+    fontSize: 12,
+    alignSelf: "flex-end",
   },
 
   othersMessageText: {
     color: globalStyle.colors.BLACK,
-    fontSize: 14,
+    fontSize: 16,
+  },
+
+  othersHour: {
+    color: globalStyle.colors.BLACK,
+    fontSize: 12,
+    alignSelf: "flex-start",
   },
 
   name: {

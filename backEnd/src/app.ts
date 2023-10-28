@@ -3,10 +3,13 @@ import { Server, Socket } from 'socket.io';
 import { createServer }  from 'node:http';
 import { codesRouter, userRouter, chatRouter, messageRouter } from './router';
 import cors from 'cors';
+import MessageService from './service/message.service';
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+const messageService = new MessageService();
 
 const server = createServer(app);
 export const io = new Server(server, {
@@ -22,9 +25,17 @@ app.use('/message', messageRouter);
 app.use('/codes', codesRouter);
 
 io.on('connection', (socket: Socket) => {
-  console.log(`Socket conectado: ${socket.id}`);
   socket.on('reset-app', () => {
     io.emit('reset-app');
+    messageService.deleteAllMessages();
+  });
+
+  socket.on('user-online', (data) => {
+    console.log('Usuário online:', data);
+  });
+  
+  socket.on('user-offline', (data) => {
+    
   });
 });
 
