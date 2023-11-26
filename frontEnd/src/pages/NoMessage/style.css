@@ -1,0 +1,11 @@
+.cotainer-no-message {
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.title-no-message {
+  text-align: center;
+  line-height: 5rem;
+  font-size: 3rem;
+}

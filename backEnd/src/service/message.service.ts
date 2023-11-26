@@ -32,6 +32,15 @@ class MessageService {
     }
   }
 
+  async deleteAllMessages() {
+    const messages = await messageModel.deleteAllMessages();
+
+    return {
+      status: httpCodes.SUCCESS_FULL,
+      data: messages,
+    };
+  }
+
 }
 
 export default MessageService;

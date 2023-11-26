@@ -42,6 +42,12 @@ class MessageModel {
 
     return newMessage;
   }
+
+  async deleteAllMessages() {
+    const messages = await prisma.message.deleteMany();
+
+    return messages;
+  }
 }
 
 export default MessageModel;

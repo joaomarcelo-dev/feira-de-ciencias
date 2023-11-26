@@ -42,6 +42,19 @@ const style = StyleSheet.create({
     padding: 15,
     borderRadius: 50,
   },
+
+  viewTextNoMessage: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  textNoMessage: {
+    fontSize: 16,
+    color: globalStyle.colors.BLACK,
+    textAlign: "center",
+    fontWeight: "bold",
+  }
 });
 
 export default style;

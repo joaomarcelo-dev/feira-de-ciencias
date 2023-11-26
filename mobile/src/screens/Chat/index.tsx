@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { ScrollView, TextInput, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { axiosOperator } from "../../services/server";
 import { endPoint, routerMessageByChatId } from "../../Provider/app.server";
 import { useSelector } from "react-redux";
@@ -55,6 +55,7 @@ function Chat(props) {
         chatName=""
       />
       <View style={style.containerMessage}>
+   
         <ScrollView
           ref={scrollViewRef}
         >
@@ -66,11 +67,13 @@ function Chat(props) {
                   message={ decryptografic(message.message, codes) }
                   name={ message.user.name }
                   isMyMessage={ userId === message.userId }
+                  dateTime={ message.createdAt }
                 />
               )
             })
           }
         </ScrollView>
+
       </View>
 
       <View style={style.contentInputMessage}>
