@@ -31,11 +31,15 @@ function Header(props: HeaderProps) {
             { props.chatName }
           </Text>
 
-          <MaterialIcons
-            name="menu"
-            size={24}
-            color="black"
-          />
+          <TouchableOpacity
+            onPress={ () => alert('Tá aki só de infeite mesmo')}
+          >
+            <MaterialIcons
+              name="menu"
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
         </View>
       }
 

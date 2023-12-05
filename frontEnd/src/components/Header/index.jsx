@@ -15,10 +15,12 @@ function Header() {
     <div className='content-header'>
       <header className='flex-row'>
         <div />
-        <div className='content-title'>
-          <h2>1º FEIRA DE CIÊNCIAS</h2>
-          <p>C.E Neusa Bastos - Anexo I</p>
-        </div>
+        <a href="/" className='link'>
+          <div className='content-title'>
+            <h2>1º FEIRA DE CIÊNCIAS</h2>
+            <p>C.E Neusa Bastos - Anexo I</p>
+          </div>
+        </a>
 
         <button className='button-menu-toggle' onClick={handleMenu}>
           {

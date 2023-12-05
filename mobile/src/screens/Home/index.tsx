@@ -9,6 +9,7 @@ import RootReducer from "../../types/RootReducer.type";
 // Importação de funcionalidades
 import '../../services/socket'
 import { getCodes } from '../../utils/getCodes';
+import OptionsLateral from "../../components/OptionsLateral";
 
 
 function Home() {
@@ -24,6 +25,7 @@ function Home() {
         type="chats"
         chatName={ userName }
       />
+      {/* <OptionsLateral /> */}
       <ListChats
         chats={ chats }
       />
