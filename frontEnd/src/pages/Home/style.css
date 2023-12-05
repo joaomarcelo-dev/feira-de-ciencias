@@ -56,18 +56,35 @@ button.reset-app-button {
   font-size: 1.7rem;
   color: rgb(255, 171, 69);
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .content-message {
   background-color: #1a1a1a;
   padding: 10px 45px;
   border-radius: 20px;
-  margin-top: 50px;
   word-wrap: break-word;
   border: 3px solid #ccc;
+  flex: 1;
 }
 
 .text-message {
   font-size: 1.9rem;
+  text-decoration: dashed;
   max-width: 100%;
+  transition: all 0.7s ease-in-out;
 }
+
+.message-no-cripty {
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  
+}
+
+
+
+.text-invisible {
+  filter: blur(10px);
+}
+

@@ -15,4 +15,7 @@ header {
   text-align: center;
 }
 
-
+.link {
+  text-decoration: none;
+  color: #fff;
+}
